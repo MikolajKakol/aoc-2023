@@ -3,9 +3,13 @@ plugins {
 }
 
 sourceSets {
-    main {
+    test {
         kotlin.srcDir("src")
     }
+}
+
+dependencies{
+    testImplementation(kotlin("test"))
 }
 
 tasks {
