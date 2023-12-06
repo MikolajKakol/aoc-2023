@@ -1,6 +1,6 @@
 import kotlin.test.assertEquals
 
-abstract class DayTest(private val day: Day) {
+abstract class DayTest(private val day: Day, private val hasSameInputBetweenDays: Boolean = false) {
 
     protected fun testPart1(expected: Any) {
         val actual = day.part1(read("test1"))
@@ -8,7 +8,7 @@ abstract class DayTest(private val day: Day) {
     }
 
     protected fun testPart2(expected: Any) {
-        val actual = day.part2(read("test2"))
+        val actual = day.part2(read(if (hasSameInputBetweenDays) "test1" else "test2"))
         assertEquals(expected, actual)
     }
 
@@ -18,7 +18,7 @@ abstract class DayTest(private val day: Day) {
     }
 
     protected fun realPart2(expected: Any) {
-        val actual = day.part2(read("real2"))
+        val actual = day.part2(read(if (hasSameInputBetweenDays) "real1" else "real2"))
         assertEquals(expected, actual)
     }
 
