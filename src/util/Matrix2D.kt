@@ -21,6 +21,7 @@ class Matrix2D(
     fun get(point: Point2D): Char {
         return array[point.y][point.x]
     }
+
     fun get(x: Int, y: Int): Char {
         return array[y][x]
     }
@@ -47,8 +48,15 @@ class Matrix2D(
         throw NoSuchElementException()
     }
 
-    fun print(){
-        array.forEach { println(it) }
+    fun findAll(matcher: (value: Char) -> Boolean): List<Point2D> {
+        val points = mutableListOf<Point2D>()
+        for ((y, row) in array.withIndex()) {
+            for ((x, item) in row.withIndex()) {
+                if (matcher(item)) points.add(Point2D(x, y))
+            }
+        }
+
+        return points
     }
 
     companion object {

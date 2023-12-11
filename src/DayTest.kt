@@ -1,6 +1,6 @@
 import kotlin.test.assertEquals
 
-abstract class DayTest(private val day: Day, private val hasSameInputBetweenDays: Boolean = false) {
+abstract class DayTest(var day: Day, private val hasSameInputBetweenDays: Boolean = false) {
 
     protected fun testPart1(expected: Any) {
         solvePart1(expected, "test1")
