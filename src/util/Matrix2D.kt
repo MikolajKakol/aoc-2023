@@ -10,6 +10,17 @@ class Matrix2D(
     val height: Int
         get() = array.size
 
+    val rows: List<CharArray>
+        get() = array.toList()
+
+    val columns: List<CharArray>
+        get() = (0 until width)
+            .map { x ->
+                CharArray(height) { y ->
+                    get(x, y)
+                }
+            }
+
     fun traverse(action: (x: Int, y: Int, c: Char) -> Unit) {
         array.forEachIndexed { y, chars ->
             chars.forEachIndexed { x, char ->
