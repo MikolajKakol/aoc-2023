@@ -14,8 +14,12 @@ object DaySolved : Day {
         .sumOf { it.solve() }
 
     override fun part2(input: List<String>) = input
+        .joinToString("\n")
+        .split("\n\n")
+        .map { MirrorScheme(it, 1) }
+        .sumOf { it.solve() }
 
-    class MirrorScheme(input: String) {
+    class MirrorScheme(input: String, private val count: Int = 0) {
         private val matrix = Matrix2D.create(input.split("\n"))
 
         fun solve(): Int {
@@ -24,18 +28,18 @@ object DaySolved : Day {
             return column ?: (row!! * 100)
         }
 
-        private fun find(i: List<CharArray>): Int? {
-            val items = i.map { String(it) }
+        private fun find(list: List<CharArray>): Int? {
+            val items = list.map { String(it) }
             (0 until items.size - 1).forEach { index ->
-                var a = items.slice(0..index).reversed()
-                var b = items.slice(index + 1 until items.size)
-                if (a.size > b.size) {
+                var a = items.slice(0..index).reversed().joinToString("")
+                var b = items.slice(index + 1 until items.size).joinToString("")
+                if (a.length > b.length) {
                     a = a.slice(b.indices)
                 } else {
                     b = b.slice(a.indices)
                 }
-                if (a == b) return index + 1
 
+                if (a.indices.count { a[it] != b[it] } == this.count) return index + 1
             }
             return null
         }
@@ -43,7 +47,7 @@ object DaySolved : Day {
     }
 }
 
-class DaySolvedTest : DayTest(DaySolved) {
+class DaySolvedTest : DayTest(DaySolved, true) {
 
     @Test
     fun testPart1() = testPart1(405)
@@ -52,8 +56,8 @@ class DaySolvedTest : DayTest(DaySolved) {
     fun realPart1() = realPart1(28651)
 
     @Test
-    fun testPart2() = testPart2("SOLVE ME")
+    fun testPart2() = testPart2(400)
 
     @Test
-    fun realPart2() = realPart2("SOLVE ME")
+    fun realPart2() = realPart2(25450)
 }
