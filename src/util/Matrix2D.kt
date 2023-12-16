@@ -53,6 +53,10 @@ class Matrix2D(
         array[y][x] = c
     }
 
+    fun set(point: Point2D, c: Char) {
+        array[point.y][point.x] = c
+    }
+
     fun find(matcher: (value: Char) -> Boolean): Point2D {
         for ((y, row) in array.withIndex()) {
             for ((x, item) in row.withIndex()) {
