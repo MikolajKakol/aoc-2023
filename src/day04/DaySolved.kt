@@ -8,14 +8,14 @@ import kotlin.math.pow
 
 object DaySolved : Day {
 
-    override fun part1(input: List<String>) = input
+    override suspend fun part1(input: List<String>) = input
         .mapNotNull { line ->
             val (_, winning, myNumbers) = line.split(":", "|")
             winning.retrieveNumbers().intersect(myNumbers.retrieveNumbers()).size.takeIf { it > 0 }
         }
         .sumOf { 2f.pow(it - 1).toInt() }
 
-    override fun part2(input: List<String>): Any {
+    override suspend fun part2(input: List<String>): Any {
         val cardPiles = input.mapIndexed { index, s -> index to mutableListOf(s) }.toMap()
         cardPiles.keys.sorted().forEach { index ->
             val cardsOfType = cardPiles[index]!!

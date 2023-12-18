@@ -9,14 +9,14 @@ import util.Point2D
 
 object DaySolved : Day {
 
-    override fun part1(input: List<String>): Any {
+    override suspend fun part1(input: List<String>): Any {
         val matrix = Matrix2D.create(input)
         return matrix.findNumbers()
             .filter { it.hasSerialNumber(matrix) }
             .sumOf { it.number }
     }
 
-    override fun part2(input: List<String>): Any {
+    override suspend fun part2(input: List<String>): Any {
         val matrix = Matrix2D.create(input)
 
         val parts = matrix.findNumbers()

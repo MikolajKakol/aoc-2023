@@ -6,9 +6,9 @@ import org.junit.Test
 
 object DaySolved : Day {
 
-    override fun part1(input: List<String>) = input
+    override suspend fun part1(input: List<String>) = input
 
-    override fun part2(input: List<String>) = input
+    override suspend fun part2(input: List<String>) = input
 
 }
 

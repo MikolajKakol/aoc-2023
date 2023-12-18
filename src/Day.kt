@@ -1,6 +1,6 @@
 interface Day {
 
-    fun part1(input: List<String>): Any?
+    suspend fun part1(input: List<String>): Any? = null
 
-    fun part2(input: List<String>): Any?
+    suspend fun part2(input: List<String>): Any? = null
 }

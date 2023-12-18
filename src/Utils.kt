@@ -1,3 +1,7 @@
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.coroutineScope
 import java.math.BigInteger
 import java.security.MessageDigest
 import kotlin.io.path.Path
@@ -44,4 +48,8 @@ fun lcm(input: LongArray): Long {
         var result = input[0]
         for (i in 1 until input.size) result = lcm(result, input[i])
         return result
+}
+
+suspend fun <A, B> Iterable<A>.parallelMap(f: suspend (A) -> B): List<B> = coroutineScope {
+        map { async(Dispatchers.Default) { f(it) } }.awaitAll()
 }

@@ -7,10 +7,10 @@ import util.retrieveNumbers
 
 object DaySolved : Day {
 
-    override fun part1(input: List<String>) = input
+    override suspend fun part1(input: List<String>) = input
         .sumOf { it.retrieveNumbers().predictNext() }
 
-    override fun part2(input: List<String>) = input
+    override suspend fun part2(input: List<String>) = input
         .sumOf {
             it.retrieveNumbers()
                 .predictNext(

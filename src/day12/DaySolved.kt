@@ -7,7 +7,7 @@ import util.retrieveNumbers
 
 object DaySolved : Day {
 
-    override fun part1(input: List<String>) = input
+    override suspend fun part1(input: List<String>) = input
         .sumOf { line ->
             val (pattern, pipesInfo) = line.split(" ")
             val pipes = pipesInfo.retrieveNumbers()
@@ -29,7 +29,7 @@ object DaySolved : Day {
                 }
         }
 
-    override fun part2(input: List<String>) = input
+    override suspend fun part2(input: List<String>) = input
         .sumOf { line ->
             val (p, i) = line.split(" ")
             val pattern = "$p?$p?$p?$p?$p"

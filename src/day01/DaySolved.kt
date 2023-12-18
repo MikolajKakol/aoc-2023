@@ -6,7 +6,7 @@ import org.junit.Test
 
 object DaySolved : Day {
 
-    override fun part1(input: List<String>): Int = input
+    override suspend fun part1(input: List<String>): Int = input
             .map { text ->
                 val first = text.first { it.isDigit() }.toString()
                 val second = text.last { it.isDigit() }.toString()
@@ -14,7 +14,7 @@ object DaySolved : Day {
             }
             .sumOf { it.toInt() }
 
-    override fun part2(input: List<String>): Int = input
+    override suspend fun part2(input: List<String>): Int = input
             .map { text ->
                 var first = ""
                 var second = ""
@@ -42,7 +42,7 @@ object DaySolved : Day {
 
                 first + second
             }
-            .let(::part1)
+            .let { part1(it) }
 
     private fun String.stringToIntString(): String {
         val indexOf = digitsAsString.indexOf(this)

@@ -6,7 +6,7 @@ import org.junit.Test
 
 object DaySolved : Day {
 
-    override fun part1(input: List<String>) = input
+    override suspend fun part1(input: List<String>) = input
         .joinToString()
         .split(",")
         .sumOf { it.hash() }
@@ -15,7 +15,7 @@ object DaySolved : Day {
         ((c.code + acc) * 17) % 256
     }
 
-    override fun part2(input: List<String>) = input
+    override suspend fun part2(input: List<String>) = input
         .joinToString()
         .split(",")
         .groupBy {

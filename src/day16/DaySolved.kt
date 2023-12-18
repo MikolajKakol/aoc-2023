@@ -3,14 +3,15 @@ package day16
 import Day
 import DayTest
 import org.junit.Test
+import parallelMap
 import util.*
 import kotlin.test.fail
 
 object DaySolved : Day {
 
-    override fun part1(input: List<String>) = Maze(input, DirectedPoint2D(Point2D(0, 0), Direction.EAST)).solve()
+    override suspend fun part1(input: List<String>) = Maze(input, DirectedPoint2D(Point2D(0, 0), Direction.EAST)).solve()
 
-    override fun part2(input: List<String>) : Int = input
+    override suspend fun part2(input: List<String>) : Int = input
         .let {
             val width = input[0].length
             listOf(
@@ -28,7 +29,7 @@ object DaySolved : Day {
                 }
             )
                 .flatten()
-                .map {  Maze(input, it).solve() }
+                .parallelMap {  Maze(input, it).solve() }
                 .max()
         }
 

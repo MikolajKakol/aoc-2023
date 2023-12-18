@@ -11,7 +11,7 @@ object DaySolved : Day {
     private lateinit var availableTimes: List<Int>
     private lateinit var distanceRecords: List<Long>
 
-    override fun part1(input: List<String>) = input
+    override suspend fun part1(input: List<String>) = input
         .forEachIndexed { index, s ->
             when (index) {
                 0 -> availableTimes = s.retrieveNumbers()
@@ -27,7 +27,7 @@ object DaySolved : Day {
             }.reduce { acc, i -> acc * i }
         }
 
-    override fun part2(input: List<String>) = input
+    override suspend fun part2(input: List<String>) = input
         .forEachIndexed { index, s ->
             when (index) {
                 0 -> availableTimes = s.replace(" ", "").retrieveNumbers()

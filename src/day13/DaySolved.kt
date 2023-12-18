@@ -7,13 +7,13 @@ import util.Matrix2D
 
 object DaySolved : Day {
 
-    override fun part1(input: List<String>) = input
+    override suspend fun part1(input: List<String>) = input
         .joinToString("\n")
         .split("\n\n")
         .map { MirrorScheme(it) }
         .sumOf { it.solve() }
 
-    override fun part2(input: List<String>) = input
+    override suspend fun part2(input: List<String>) = input
         .joinToString("\n")
         .split("\n\n")
         .map { MirrorScheme(it, 1) }

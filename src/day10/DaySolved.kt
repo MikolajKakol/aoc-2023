@@ -9,10 +9,10 @@ import util.Point2D
 
 object DaySolved : Day {
 
-    override fun part1(input: List<String>) = input
+    override suspend fun part1(input: List<String>) = input
         .let { Maze(it).solveP1() }
 
-    override fun part2(input: List<String>) = input
+    override suspend fun part2(input: List<String>) = input
         .let { Maze(it).solveP2() }
 
     class Maze(input: List<String>) {

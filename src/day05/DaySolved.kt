@@ -7,7 +7,7 @@ import util.retrieveLongNumbers
 
 object DaySolved : Day {
 
-    override fun part1(input: List<String>) = input
+    override suspend fun part1(input: List<String>) = input
         .joinToString("\n")
         .split("\n\n")
         .let { chunks ->
@@ -25,7 +25,7 @@ object DaySolved : Day {
         }
         .min()
 
-    override fun part2(input: List<String>) = input
+    override suspend fun part2(input: List<String>) = input
         .joinToString("\n")
         .split("\n\n")
         .let { chunks ->

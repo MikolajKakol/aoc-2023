@@ -8,7 +8,7 @@ import util.println
 
 object DaySolved : Day {
 
-    override fun part1(input: List<String>) = input
+    override suspend fun part1(input: List<String>) = input
         .map {
             val (hand, bid) = it.split(" ")
             Deal(Hand(hand.map(::Card)), bid.toInt())
@@ -20,7 +20,7 @@ object DaySolved : Day {
         .mapIndexed { index, deal -> (index + 1).toLong() * deal.bid.toLong() }
         .sum()
 
-    override fun part2(input: List<String>) = input
+    override suspend fun part2(input: List<String>) = input
         .map {
             val (hand, bid) = it.split(" ")
             Deal(Hand(hand.map(::Card)), bid.toInt())

@@ -9,10 +9,10 @@ import kotlin.test.BeforeTest
 
 class DaySolved(val growthRate: Int) : Day {
 
-    override fun part1(input: List<String>) = input
+    override suspend fun part1(input: List<String>) = input
         .let { Universe(it, growthRate).solve() }
 
-    override fun part2(input: List<String>) = input
+    override suspend fun part2(input: List<String>) = input
         .let { Universe(it, growthRate).solve() }
 
     class Universe(input: List<String>, val growthRate: Int) {

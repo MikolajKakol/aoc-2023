@@ -1,3 +1,4 @@
+import kotlinx.coroutines.test.runTest
 import kotlin.test.assertEquals
 
 abstract class DayTest(var day: Day, private val hasSameInputBetweenDays: Boolean = false) {
@@ -18,12 +19,12 @@ abstract class DayTest(var day: Day, private val hasSameInputBetweenDays: Boolea
         solvePart2(expected, if (hasSameInputBetweenDays) "real1" else "real2")
     }
 
-    protected fun solvePart1(expected: Any, part: String) {
+    protected fun solvePart1(expected: Any, part: String) = runTest {
         val actual = day.part1(read(part))
         assertEquals(expected, actual)
     }
 
-    protected fun solvePart2(expected: Any, part: String) {
+    protected fun solvePart2(expected: Any, part: String) = runTest {
         val actual = day.part2(read(part))
         assertEquals(expected, actual)
     }

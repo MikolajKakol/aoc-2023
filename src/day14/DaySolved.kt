@@ -5,14 +5,13 @@ import DayTest
 import org.junit.Test
 import util.Matrix2D
 
-
 object DaySolved : Day {
 
-    override fun part1(input: List<String>) = input
+    override suspend fun part1(input: List<String>) = input
         .let { RockDish(it) }
         .solve()
 
-    override fun part2(input: List<String>) = input
+    override suspend fun part2(input: List<String>) = input
 
     class RockDish(input: List<String>) {
         private val matrix = Matrix2D.create(input)

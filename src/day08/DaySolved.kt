@@ -7,8 +7,7 @@ import org.junit.Test
 
 object DaySolved : Day {
 
-
-    override fun part1(input: List<String>): Any {
+    override suspend fun part1(input: List<String>): Any {
         lateinit var instructions: String
         val nodes: MutableMap<String, Pair<String, String>> = mutableMapOf()
         return input
@@ -51,7 +50,7 @@ object DaySolved : Day {
         return stepCount
     }
 
-    override fun part2(input: List<String>): Any {
+    override suspend fun part2(input: List<String>): Any {
         lateinit var instructions: String
         val nodes: MutableMap<String, Pair<String, String>> = mutableMapOf()
         return input

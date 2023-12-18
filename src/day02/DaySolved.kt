@@ -8,7 +8,7 @@ object DaySolved : Day {
 
     private val inventrory = BallSet(red = 12, green = 13, blue = 14)
 
-    override fun part1(input: List<String>) = input
+    override suspend fun part1(input: List<String>) = input
             .sumOf { line ->
                 val (game, sets) = line.split(":")
                 val gameId = game.removePrefix("Game ").toInt()
@@ -19,7 +19,7 @@ object DaySolved : Day {
                 if (isValid) gameId else 0
             }
 
-    override fun part2(input: List<String>) = input
+    override suspend fun part2(input: List<String>) = input
             .sumOf { line ->
                 val (_, sets) = line.split(":")
                 val ballSets = sets.split(";").map(BallSet::fromString)
