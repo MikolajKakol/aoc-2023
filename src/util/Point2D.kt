@@ -4,12 +4,12 @@ import kotlin.math.abs
 
 data class Point2D(val x: Int, val y: Int) {
 
-    fun move(direction: Direction): Point2D {
+    fun move(direction: Direction, distance: Int = 1): Point2D {
         return when (direction) {
-            Direction.NORTH -> Point2D(x, y - 1)
-            Direction.SOUTH -> Point2D(x, y + 1)
-            Direction.EAST -> Point2D(x + 1, y)
-            Direction.WEST -> Point2D(x - 1, y)
+            Direction.NORTH -> Point2D(x, y - distance)
+            Direction.SOUTH -> Point2D(x, y + distance)
+            Direction.EAST -> Point2D(x + distance, y)
+            Direction.WEST -> Point2D(x - distance, y)
         }
     }
 

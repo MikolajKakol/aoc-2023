@@ -78,9 +78,24 @@ class Matrix2D(
         return points
     }
 
+    fun print() {
+        array.forEach { row ->
+            String(row).println()
+        }
+    }
+
     companion object {
         fun create(input: List<String>): Matrix2D {
             val twoDArray = Array(input.size) { i -> input[i].toCharArray() }
+            return Matrix2D(twoDArray)
+        }
+
+        fun create(width: Int, height: Int, init: (x: Int, y: Int) -> Char = { x, y -> '.' }): Matrix2D {
+            val twoDArray = Array(height) { y ->
+                CharArray(width) { x ->
+                    init(x, y)
+                }
+            }
             return Matrix2D(twoDArray)
         }
     }
