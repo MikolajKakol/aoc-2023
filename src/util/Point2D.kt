@@ -2,7 +2,7 @@ package util
 
 import kotlin.math.abs
 
-data class Point2D(val x: Int, val y: Int) {
+data class Point2D(val x: Int, val y: Int) : Comparable<Point2D> {
 
     fun move(direction: Direction, distance: Int = 1): Point2D {
         return when (direction) {
@@ -19,6 +19,16 @@ data class Point2D(val x: Int, val y: Int) {
 
     fun manhattanDistance(b: Point2D): Int {
         return abs(x - b.x) + abs(y - b.y)
+    }
+
+    override fun compareTo(other: Point2D): Int {
+        return when {
+            y < other.y -> -1
+            y > other.y -> 1
+            x < other.x -> -1
+            x > other.x -> 1
+            else -> 0
+        }
     }
 
     override fun toString(): String {

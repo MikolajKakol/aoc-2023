@@ -37,6 +37,22 @@ class Matrix2D(
         return array[y][x]
     }
 
+    fun getInfinite(point: Point2D): Char {
+        return getInfinite(point.x, point.y)
+    }
+
+    fun getInfinite(x: Int, y: Int): Char {
+        var adjustedX = x % width
+        var adjustedY = y % height
+        if (adjustedX < 0) {
+            adjustedX += width
+        }
+        if (adjustedY < 0) {
+            adjustedY += height
+        }
+        return array[adjustedY][adjustedX]
+    }
+
     fun getOrNull(point: Point2D): Char? {
         return getOrNull(point.x, point.y)
     }
@@ -55,6 +71,10 @@ class Matrix2D(
 
     fun set(point: Point2D, c: Char) {
         array[point.y][point.x] = c
+    }
+
+    fun find(value: Char): Point2D {
+        return find { it == value }
     }
 
     fun find(matcher: (value: Char) -> Boolean): Point2D {
