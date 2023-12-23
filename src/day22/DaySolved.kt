@@ -2,7 +2,6 @@ package day22
 
 import Day
 import DayTest
-import day22.DaySolved.above
 import org.junit.Test
 import util.Cube
 import util.Matrix3D
