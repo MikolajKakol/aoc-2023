@@ -22,10 +22,35 @@ object DaySolved : Day {
     override suspend fun part2(input: List<String>) =
         prepareCubes(input)
             .let { cubes ->
-                cubes.filter {
+                val cubesMap = cubes.associateBy { it.name }
+                val multiFallCubes = cubes.filter {
                     val above = cubes.above(it)
-                    canRemove(it, above, cubes)
+                    !canRemove(it, above, cubes)
                 }
+                val maxX = cubes.maxOf { it.end.x }
+                val maxY = cubes.maxOf { it.end.y }
+                val maxZ = cubes.maxOf { it.end.z }
+
+                multiFallCubes
+                    .sumOf { removeCube ->
+                        val matrix = Matrix3D.create(maxX + 1, maxY + 1, maxZ + 1) { _, _, z ->
+                            if (z == 0) {
+                                '-'
+                            } else {
+                                '.'
+                            }
+                        }
+
+                        (cubes - removeCube)
+                            .map { it.settle(matrix) }
+                            .map {  cube ->
+                                if (cubesMap[cube.name]!!.start.z == cube.start.z) {
+                                    0
+                                } else {
+                                    1
+                                }
+                            }.sum()
+                    }
             }
 
 
@@ -134,5 +159,5 @@ class DaySolvedTest : DayTest(DaySolved, true) {
     fun testPart2() = testPart2(7)
 
     @Test
-    fun realPart2() = realPart2("SOLVE ME")
+    fun realPart2() = realPart2(42561)
 }
